@@ -1,4 +1,13 @@
 import type { Config } from "tailwindcss";
+import defaultColors from "tailwindcss/colors";
+
+const custom_colors = {
+  ...defaultColors,
+  primary: {
+    700: "#2B4EA9",
+    600: "#3865DB",
+  }
+}
 
 export default {
   content: [
@@ -9,8 +18,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        ...custom_colors
       },
     },
   },
