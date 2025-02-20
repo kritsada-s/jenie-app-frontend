@@ -5,7 +5,7 @@ const custom_colors = {
   ...defaultColors,
   primary: {
     700: "#2B4EA9",
-    600: "#3865DB",
+    600: "#629AFF",
   }
 }
 
@@ -21,6 +21,12 @@ export default {
         ...custom_colors
       },
     },
+    container: {
+			center: true,
+			screens: {
+				xl: '1200px'
+			}
+		},
   },
   plugins: [],
 } satisfies Config;

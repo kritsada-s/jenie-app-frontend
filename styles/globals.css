@@ -5,6 +5,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-700: #2B4EA9;
+  --primary-600: #629AFF;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,4 +20,57 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+#hero {
+  background-image: url('/intro-top-dec.png'), linear-gradient(to bottom, var(--primary-700), var(--primary-600));
+  background-size: 75%, 100%;
+  background-position: 95% 0, top left;
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 768px) {
+  #hero {
+    background-size: 36%, 100%;
+    background-position: 90% 0, top left;
+  }
+}
+
+.bottom-bg {
+  background-image: url('/bottom_decor.png');
+  background-size: 250%;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 768px) {
+  .bottom-bg {
+    background-size: 100%;
+  }
+}
+
+.feature-box.odd {
+  background-image: url('/right-dec-01.png');
+  background-size: 180px;
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 1280px) {
+  .feature-box.odd {
+    background-size: 250px;
+  }
+}
+
+.feature-box.even {
+  background-image: url('/left-dec-01.png');
+  background-size: 250px;
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 1280px) {
+  .feature-box.even {
+    background-size: 400px;
+  }
 }
