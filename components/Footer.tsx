@@ -59,14 +59,14 @@ const footerMenus = {
       },
       {
         "id": 2,
-        "name": "เสนอขายสินค้าและบริการ",
-        "link": "https://procurement.assetwise.co.th/"
+        "name": "ฝากขาย-ฝากเช่า",
+        "link": "https://www.assetaplus.com/"
       },
       {
         "id": 3,
-        "name": "ฝากขาย-ฝากเช่า",
-        "link": "https://www.assetaplus.com/"
-      }
+        "name": "ร่วมงานกับเรา",
+        "link": "https://careers.assetwise.co.th/"
+      },
     ],
     "menu4": [
       {
@@ -161,7 +161,7 @@ function Footer() {
                         </div>
                     </div>
                 </div>
-                <p className="text-neutral-400 text-sm text-center pt-4 mt-4 border-t border-t-neutral-400">© สงวนลิขสิทธิ์ พ.ศ. 2567 บริษัท แอสเซทไวส์ จำกัด (มหาชน)</p>
+                <p className="text-neutral-400 text-sm text-center pt-4 mt-4 border-t border-t-neutral-400">© สงวนลิขสิทธิ์ พ.ศ. 2568 บริษัท แอสเซทไวส์ จำกัด (มหาชน)</p>
             </div>
         </footer>
     );
