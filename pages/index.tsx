@@ -14,7 +14,7 @@ import Spots from "@/components/Spots";
 import AppBadge from "@/components/AppBadge";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
-
+import { AppStoreLink, PlayStoreLink } from "@/types";
 gsap.registerPlugin(useGSAP);
 
 const getMobileOS = () => {
@@ -84,7 +84,6 @@ const FeatureBox = ({ title, description, image, reverse }: { title: string, des
 }
 
 export default function Home() {
-
   const [os, setOs] = useState<string>("");
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
@@ -113,41 +112,6 @@ export default function Home() {
       );
     });
 
-    const floatingBanner = document.querySelector('#floating_banner');
-    
-    gsap.set(floatingBanner, {
-      yPercent: -100,
-      opacity: 0
-    });
-
-    ScrollTrigger.create({
-      trigger: 'body',
-      start: '500 top',
-      end: 'top 20%',
-      onUpdate: (self) => {
-        if (self.direction === 1 && self.progress > 0) { // Scrolling down past 500px
-          gsap.to(floatingBanner, {
-            yPercent: 0,
-            opacity: 1,
-            duration: 0.2,
-            ease: 'power2.out'
-          });
-        } else if (self.direction === -1 && self.progress === 0) { // Scrolling up to top
-          gsap.to(floatingBanner, {
-            yPercent: -100,
-            opacity: 0,
-            duration: 0.2,
-            ease: 'power2.in'
-          });
-        }
-      }
-    });
-
-  }, []);
-
-  useEffect(() => {
-    const os = getMobileOS();    
-
     if (window !== undefined) {
       const handleResize = () => {
         setIsMobile(window.innerWidth < 520);
@@ -161,18 +125,26 @@ export default function Home() {
       };
     }
 
+  }, []);
+
+  useEffect(() => {
+    const os = getMobileOS();    
+
+    console.log(os);
+
     setOs(os);
 
-  }, []);
+  }, [os]);
 
   return (
     <main className={`bg-primary-600 min-h-screen ${noto_sans_thai.className}`}>
 
-      <div id="floating_banner" className={`fixed top-0 left-0 w-full p-4 bg-white/75 backdrop-blur-md z-50 items-center justify-between ${isMobile ? "flex" : "hidden"}`}>
+      <div id="floating_banner" className={`fixed top-0 left-0 w-full p-4 bg-white/65 backdrop-blur-md z-50 items-center justify-between gap-3 ${isMobile ? "flex" : "hidden"}`}>
         <div className="details flex items-center gap-4">
           <Image src={app_icon_small} alt="app_icon" width={60} height={60}/>
           <div>
-            <p className="font-medium text-[16px] mb-1 text-neutral-900 text-center">Jenie for {os === "Android" ? 'Android' : 'iOS'}</p>
+            <p className="font-medium text-[16px] mb-1 text-neutral-900">Jenie for {os}</p>
+            <p className="text-[10px] mb-1 leading-none">แจ้งปัญหา, สนทนากับนิติฯ ง่ายๆ ผ่านแอปพลิเคชัน</p>
             <div className="flex items-center gap-1">
               <FaStar className="text-yellow-500"/>
               <FaStar className="text-yellow-500"/>
@@ -183,18 +155,18 @@ export default function Home() {
           </div>
         </div>
         <div className="download">
-          <a href={os === "Android" ? "https://play.google.com/store/apps/details?id=com.example.app" : "https://apps.apple.com/app/id1234567890"} className="text-white bg-pink-500 px-4 py-2 rounded text-center">ดาวน์โหลด</a>
+          <a href={os === "Android" ? PlayStoreLink : AppStoreLink} className="text-white bg-pink-500 px-4 py-2 rounded text-center">ดาวน์โหลด</a>
         </div>
       </div>
 
-      <section id="hero" className="lg:min-h-[760px] lg:h-screen flex items-center py-8 md:py-16">
+      <section id="hero" className="lg:min-h-[760px] lg:h-screen flex items-center pt-[120px] pb-8 md:py-16">
         <div className="container mx-auto flex gap-8 panel">
           <div className="w-full md:w-4/6 mx-auto flex md:flex-row gap-7 md:gap-16 flex-col-reverse">
             <div className="w-full md:w-2/5 flex justify-center items-center md:justify-end">
               <Image src={device_intro} alt="device_intro" className="w-auto h-auto z-10 hidden md:block" />
               <Image src={device_half} alt="device_intro" className="w-auto h-auto z-10 block md:hidden" />
             </div>
-            <div className="w-full md:w-3/5 flex flex-col gap-4 items-center">
+            <div className="w-full md:w-3/5 flex flex-col gap-5 items-center">
               <Image src={app_icon} alt="app_icon" width={200} height={200}/>
               <h1 className="text-white w-4/5 lg:w-5/6 tracking-wider">
                 <span className="font-bold text-4xl md:text-3xl lg:text-5xl">บ้านที่ดี</span><span className="text-xl lg:text-2xl"> คือจุดเริ่มต้น</span>
